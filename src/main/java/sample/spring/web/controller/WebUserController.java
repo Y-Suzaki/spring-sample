@@ -19,7 +19,7 @@ public class WebUserController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping(value="/", method=RequestMethod.GET)
+    @RequestMapping(value="", method=RequestMethod.GET)
     public List<String> getUserIds() {
         List<User> users = userRepository.selectAll();
         List<String> ids = users.stream().map(x -> x.id).collect(Collectors.toList());

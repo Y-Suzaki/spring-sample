@@ -3,28 +3,29 @@ package sample.spring.web.repository;
 import org.seasar.doma.*;
 import org.seasar.doma.boot.ConfigAutowireable;
 import org.springframework.transaction.annotation.Transactional;
-import sample.spring.web.model.User;
+import sample.spring.web.model.Bookmark;
+
 import java.util.List;
 
 @Dao
 @ConfigAutowireable
-public interface UserRepository {
+public interface BookmarkRepository {
 
     @Select
-    List<User> selectAll();
+    List<Bookmark> selectAll();
 
     @Select
-    User selectById(Integer id);
+    Bookmark selectById(Integer id);
 
     @Insert
     @Transactional
-    int insert(User user);
+    int insert(Bookmark bookmark);
 
     @Update
     @Transactional
-    int update(User user);
+    int update(Bookmark bookmark);
 
     @Delete
     @Transactional
-    int delete(User user);
+    int delete(Bookmark bookmark);
 }
