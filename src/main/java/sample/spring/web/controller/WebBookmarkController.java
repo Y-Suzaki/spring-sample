@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import sample.spring.web.model.Bookmark;
+import sample.spring.web.model.BookmarkTag;
 import sample.spring.web.repository.BookmarkRepository;
 
 import java.util.List;
@@ -18,7 +19,8 @@ public class WebBookmarkController {
     private BookmarkRepository bookmarkRepository;
 
     @RequestMapping(value="", method= RequestMethod.GET)
-    public List<Bookmark> getBookmarks() {
-        return bookmarkRepository.selectAll();
+    public List<BookmarkTag> getBookmarks() {
+       List<BookmarkTag> bookmarkTags = bookmarkRepository.selectAllWithTag();
+       return bookmarkTags;
     }
 }

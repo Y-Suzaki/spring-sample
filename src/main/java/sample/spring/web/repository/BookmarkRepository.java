@@ -4,6 +4,7 @@ import org.seasar.doma.*;
 import org.seasar.doma.boot.ConfigAutowireable;
 import org.springframework.transaction.annotation.Transactional;
 import sample.spring.web.model.Bookmark;
+import sample.spring.web.model.BookmarkTag;
 
 import java.util.List;
 
@@ -13,6 +14,9 @@ public interface BookmarkRepository {
 
     @Select
     List<Bookmark> selectAll();
+
+    @Select
+    List<BookmarkTag> selectAllWithTag();
 
     @Select
     Bookmark selectById(Integer id);
