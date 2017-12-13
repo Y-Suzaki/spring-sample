@@ -19,6 +19,9 @@ public interface BookmarkRepository {
     List<BookmarkTag> selectAllWithTag();
 
     @Select
+    List<BookmarkTag> selectAllWithTagByTagId(Integer tagId);
+
+    @Select
     Bookmark selectById(Integer id);
 
     @Insert
