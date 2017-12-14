@@ -27,7 +27,8 @@ public class WebBookmarkController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<BookmarkDto> getBookmarks(@RequestParam(name = "tag", required = false) Optional<Integer> tag) {
         if(tag.isPresent()) {
-            return BookmarkDto.convert(bookmarkRepository.selectAllWithTagByTagId(tag.get()));
+            List<Integer> ids = bookmarkRepository.selectIdsByTagId(tag.get());
+            return BookmarkDto.convert(bookmarkRepository.selectAllWithTagByIds(ids));
         } else {
             return BookmarkDto.convert(bookmarkRepository.selectAllWithTag());
         }
