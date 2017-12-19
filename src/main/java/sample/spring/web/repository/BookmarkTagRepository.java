@@ -23,4 +23,12 @@ public interface BookmarkTagRepository {
     @Delete
     @Transactional
     int delete(BookmarkTag bookmarkTag);
+
+    @Delete(sqlFile = true)
+    @Transactional
+    int deleteByBookmarkId(Integer bookmarkId);
+
+    @Delete(sqlFile = true)
+    @Transactional
+    int deleteByTagId(Integer tagId);
 }

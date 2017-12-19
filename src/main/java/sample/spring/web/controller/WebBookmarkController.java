@@ -35,7 +35,7 @@ public class WebBookmarkController {
      * @param tag URLのtagパラメータが設定されます。
      * @return {@link BookmarkDto}
      */
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(path = "", method = RequestMethod.GET)
     public List<BookmarkDto> getBookmarks(@RequestParam(name = "tag", required = false) Optional<Integer> tag) {
         if(tag.isPresent()) {
             List<Integer> ids = bookmarkRepository.selectIdsByTagId(tag.get());
@@ -46,7 +46,7 @@ public class WebBookmarkController {
     }
 
     @Transactional
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(path = "", method = RequestMethod.POST)
     public BookmarkDto create(@RequestBody BookmarkDto bookmarkDto) {
         Bookmark bookmark = Bookmark.convert(bookmarkDto);
         bookmarkRepository.insert(bookmark);
@@ -61,6 +61,15 @@ public class WebBookmarkController {
         });
 
         return new BookmarkDto();
+    }
+
+    @Transactional
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Integer id) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.id = id;
+        bookmarkTagRepository.deleteByBookmarkId(id);
+        bookmarkRepository.delete(bookmark);
     }
 }
 
