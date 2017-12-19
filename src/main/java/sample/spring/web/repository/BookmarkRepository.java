@@ -4,7 +4,7 @@ import org.seasar.doma.*;
 import org.seasar.doma.boot.ConfigAutowireable;
 import org.springframework.transaction.annotation.Transactional;
 import sample.spring.web.model.Bookmark;
-import sample.spring.web.model.BookmarkTag;
+import sample.spring.web.model.custom.BookmarkJoinTag;
 
 import java.util.List;
 
@@ -16,10 +16,10 @@ public interface BookmarkRepository {
     List<Bookmark> selectAll();
 
     @Select
-    List<BookmarkTag> selectAllWithTag();
+    List<BookmarkJoinTag> selectAllWithTag();
 
     @Select
-    List<BookmarkTag> selectAllWithTagByIds(List<Integer> ids);
+    List<BookmarkJoinTag> selectAllWithTagByIds(List<Integer> ids);
 
     @Select
     List<Integer> selectIdsByTagId(Integer tagId);

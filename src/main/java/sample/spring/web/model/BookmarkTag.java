@@ -1,24 +1,15 @@
 package sample.spring.web.model;
 
-import org.seasar.doma.Column;
-import org.seasar.doma.Entity;
-import org.seasar.doma.Id;
+import org.seasar.doma.*;
 
 @Entity
+@Table(name = "bookmark_tag")
 public class BookmarkTag {
     @Id
     @Column(name = "bookmark_id")
-    public Integer id;
+    public Integer bookmarkId;
 
-    @Column(name = "bookmark_url")
-    public String url;
-
-    @Column(name = "bookmark_description")
-    public String description;
-
+    @Id
     @Column(name = "tag_id")
-    public Integer tag_id;
-
-    @Column(name = "tag_tag")
-    public String tag;
+    public Integer tagId;
 }

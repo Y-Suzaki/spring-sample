@@ -1,18 +1,20 @@
 package sample.spring.web.dto;
 
-import sample.spring.web.model.BookmarkTag;
+import lombok.ToString;
+import sample.spring.web.model.custom.BookmarkJoinTag;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@ToString
 public class BookmarkDto {
     public Integer id;
     public String url;
     public String description;
     public List<TagDto> tags = new ArrayList<>();
 
-    public static List<BookmarkDto> convert(List<BookmarkTag> bookmarkTags) {
+    public static List<BookmarkDto> convert(List<BookmarkJoinTag> bookmarkTags) {
         List<BookmarkDto> bookmarkDtos = new ArrayList<>();
 
         bookmarkTags.forEach(tag -> {
